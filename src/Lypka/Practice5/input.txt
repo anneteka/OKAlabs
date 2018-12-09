@@ -1,0 +1,40 @@
+The Shawshank Redemption
+Drama
+1994
+9.3
+The Godfather
+Crime, Drama
+1972
+9.2
+The Dark Knight
+Action, Crime, Drama
+2008
+9.0
+12 Angry Men
+Crime, Drama
+1957
+8.9
+Schindler's List
+Drama, History
+1993
+8.9
+The Lord of the Rings: The Return of the King
+Action, Adventure, Drama
+2003
+8.9
+Pulp Fiction
+Crime, Drama
+1994
+8.9
+Fight Club
+Drama
+1999
+8.8
+Inception
+Action, Adventure, Sci-fi
+2010
+8.8
+The Silence of the Lambs
+Crime, Drama, Thriller
+1991
+8.6
