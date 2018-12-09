@@ -1,0 +1,65 @@
+Task1:
+
+T(N)=a*N^b
+
+b=2
+
+T(N)=a*b^2
+
+T(31001)=4.547=a*31001^2; 
+
+a=4.547/3101^2;
+
+a=4.547/961062001==0.000000004731224
+
+T(N)=N^2*4.77*10^-9
+
+T(25001)=2.95~2.738
+
+ 
+
+
+
+Task2 :
+
+1. first for=N*()
+
+2. second for=N*N=2^k
+
+ln(2)N^2=ln(2)2^k
+
+2log(2)N+1=k
+
+Result: N*((2log(2)N)+1)
+
+
+
+
+
+Task3 :
+
+public class Box (16) {
+
+
+
+private long x0, x1, x2, x3; (32);
+
+
+
+private double y0, y1, y2, y3; (32)
+
+
+
+private boolean z0, z1; 2
+
+
+
+private int[] a = new int[288];  8+4*288+24
+
+
+
+...
+
+32+32+2+8+24+4*288+16=1266 +(6 дод біт)=1272
+
+}
