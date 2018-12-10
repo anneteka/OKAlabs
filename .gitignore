@@ -1,6 +1,7 @@
 .classpath
 .project
 .class
+.txt
 .idea/
 .settings/
 bin/
