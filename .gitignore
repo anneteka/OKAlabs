@@ -1,7 +1,7 @@
 .classpath
 .project
 .class
-.txt
+.DS_Store
 .idea/
 .settings/
 bin/
