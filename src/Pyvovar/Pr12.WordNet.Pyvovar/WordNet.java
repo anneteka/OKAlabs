@@ -28,10 +28,20 @@ public class WordNet {
 		idToSynset = new HashMap<>();
 		nounToIds = new HashMap<>();
 		initSynsets(synsets);
-		Digraph graph = initHypernyms(hypernyms);
+		Digraph graph = new Digraph(idToSynset.size());
+
+		In file = new In(hypernyms);
+		while (file.hasNextLine()) {
+			String[] srtArray = file.readLine().split(",");
+			int synsetId = Integer.parseInt(srtArray[0]);
+			for (int i = 1; i < srtArray.length; i++) {
+				int id = Integer.parseInt(srtArray[i]);
+				graph.addEdge(synsetId, id);
+			}
+		}
 
 		DirectedCycle cycle = new DirectedCycle(graph);
-		if (cycle.hasCycle() || !rootedDAG(graph)) {
+		if (cycle.hasCycle() || !onlyOneRoot(graph)) {
 			throw new IllegalArgumentException();
 		}
 
@@ -42,7 +52,7 @@ public class WordNet {
 	 * @param g
 	 * @return чи має одну вершину, що є предком всіх інших вершин
 	 */
-	private boolean rootedDAG(Digraph g) {
+	private boolean onlyOneRoot(Digraph g) {
 		int roots = 0;
 		for (int i = 0; i < g.V(); i++) {
 			if (!g.adj(i).iterator().hasNext()) {
@@ -59,9 +69,9 @@ public class WordNet {
 	private void initSynsets(String synset) {
 		In file = new In(synset);
 		while (file.hasNextLine()) {
-			String[] line = file.readLine().split(",");
-			Integer id = Integer.valueOf(line[0]);
-			String n = line[1];
+			String[] strArray = file.readLine().split(",");
+			Integer id = Integer.valueOf(strArray[0]);
+			String n = strArray[1];
 			idToSynset.put(id, n);
 
 			String[] nouns = n.split(" ");
@@ -74,22 +84,6 @@ public class WordNet {
 				nounToIds.put(noun, ids);
 			}
 		}
-	}
-
-	private Digraph initHypernyms(String hypernyms) {
-		Digraph graph = new Digraph(idToSynset.size());
-
-		In file = new In(hypernyms);
-		while (file.hasNextLine()) {
-			String[] line = file.readLine().split(",");
-			Integer synsetId = Integer.valueOf(line[0]);
-			for (int i = 1; i < line.length; i++) {
-				Integer id = Integer.valueOf(line[i]);
-				graph.addEdge(synsetId, id);
-			}
-		}
-
-		return graph;
 	}
 
 	/**

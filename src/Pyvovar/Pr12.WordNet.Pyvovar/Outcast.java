@@ -1,6 +1,5 @@
 import java.util.Arrays;
 
-import princetonlib.In;
 import princetonlib.StdOut;
 
 /**
@@ -23,23 +22,24 @@ public class Outcast {
 	}
 	
 	/**
+	 * маючи масив WordNet іменників, повернути «ізгоя»
 	 * @param nouns
-	 * @return маючи масив WordNet іменників, повернути «ізгоя»
+	 * @return «ізгой»
 	 */
 	public String outcast(String[] nouns) {
 		String outcast = null;
 		int max = 0;
 
-		for (String nounA : nouns) {
-			int dist = 0;
-			for (String nounB : nouns) {
-				if (!nounA.equals(nounB)) {
-					dist += wordNet.distance(nounA, nounB);
+		for (String first : nouns) {
+			int distance = 0;
+			for (String second : nouns) {
+				if (!first.equals(second)) {
+					distance += wordNet.distance(first, second);
 				}
 			}
-			if (dist > max) {
-				max = dist;
-				outcast = nounA;
+			if (distance > max) {
+				max = distance;
+				outcast = first;
 			}
 		}
 		return outcast;

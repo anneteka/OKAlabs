@@ -25,26 +25,36 @@ public class SAP {
 		graph = new Digraph(G);
 	}
 
-	private int[] modify(int[] a) {
-		if (a[0] == Integer.MAX_VALUE) {
-			a[0] = -1;
-			a[1] = -1;
-		}
-		return a;
-	}
-
-	private int[] helper(BreadthFirstDirectedPaths bfs1, BreadthFirstDirectedPaths bfs2) {
-		int length = Integer.MAX_VALUE, ancestor = 0;
-		for (int i = 0, temp = 0; i < graph.V(); i++) {
+	/**
+	 * @param bfs1
+	 * @param bfs2
+	 * @param lengthReturn якщо true повертає найкоротший шлях, інакше - предка
+	 * @return предок або довжина найкоротшого шляху, залежить від параметра
+	 *         lengthReturn
+	 */
+	private int findAncestorAndLength(BreadthFirstDirectedPaths bfs1, BreadthFirstDirectedPaths bfs2,
+			boolean lengthReturn) {
+		int ancestor = 0;
+		int length = Integer.MAX_VALUE;
+		int pathTogether = 0;
+		for (int i = 0; i < graph.V(); i++) {
 			if (bfs1.hasPathTo(i) && bfs2.hasPathTo(i)) {
-				temp = bfs1.distTo(i) + bfs2.distTo(i);
-				if (temp < length) {
-					length = temp;
+				pathTogether = bfs1.distTo(i) + bfs2.distTo(i);
+				if (pathTogether < length) {
+					length = pathTogether;
 					ancestor = i;
 				}
 			}
 		}
-		return new int[] { length, ancestor };
+
+		if (length == Integer.MAX_VALUE) {
+			length = -1;
+			ancestor = -1;
+		}
+
+		if (lengthReturn)
+			return length;
+		return ancestor;
 	}
 
 	/**
@@ -59,7 +69,7 @@ public class SAP {
 			throw new IndexOutOfBoundsException();
 		BreadthFirstDirectedPaths bfs1 = new BreadthFirstDirectedPaths(graph, v);
 		BreadthFirstDirectedPaths bfs2 = new BreadthFirstDirectedPaths(graph, w);
-		return modify(helper(bfs1, bfs2))[0];
+		return findAncestorAndLength(bfs1, bfs2, true);
 	}
 
 	/**
@@ -75,7 +85,7 @@ public class SAP {
 			throw new IndexOutOfBoundsException();
 		BreadthFirstDirectedPaths bfs1 = new BreadthFirstDirectedPaths(graph, v);
 		BreadthFirstDirectedPaths bfs2 = new BreadthFirstDirectedPaths(graph, w);
-		return modify(helper(bfs1, bfs2))[1];
+		return findAncestorAndLength(bfs1, bfs2, false);
 	}
 
 	/**
@@ -89,7 +99,7 @@ public class SAP {
 			throw new NullPointerException();
 		BreadthFirstDirectedPaths bfs1 = new BreadthFirstDirectedPaths(graph, v);
 		BreadthFirstDirectedPaths bfs2 = new BreadthFirstDirectedPaths(graph, w);
-		return modify(helper(bfs1, bfs2))[0];
+		return findAncestorAndLength(bfs1, bfs2, true);
 	}
 
 	/**
@@ -103,7 +113,7 @@ public class SAP {
 			throw new NullPointerException();
 		BreadthFirstDirectedPaths bfs1 = new BreadthFirstDirectedPaths(graph, v);
 		BreadthFirstDirectedPaths bfs2 = new BreadthFirstDirectedPaths(graph, w);
-		return modify(helper(bfs1, bfs2))[1];
+		return findAncestorAndLength(bfs1, bfs2, false);
 	}
 
 	public static void main(String[] args) {
