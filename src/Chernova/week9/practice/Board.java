@@ -1,4 +1,4 @@
-package Chernova.week9.practice;
+package week9.practice;
 
 import java.util.Arrays;
 import java.util.Stack;

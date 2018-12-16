@@ -1,4 +1,4 @@
-package Chernova.week8.practice;
+package week8.practice;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

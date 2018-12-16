@@ -1,4 +1,4 @@
-package Chernova.week10.practice;
+package week10.practice;
 
 import java.io.IOException;
 import java.sql.Time;

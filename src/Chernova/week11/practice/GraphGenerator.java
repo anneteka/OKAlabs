@@ -1,4 +1,4 @@
-package Chernova.week11.practice;
+package week11.practice;
 
 import java.io.FileWriter;
 import java.io.IOException;

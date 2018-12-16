@@ -1,4 +1,4 @@
-package Chernova.week7.practice;
+package week7.practice;
 
 import edu.princeton.cs.introcs.StdDraw;
 import edu.princeton.cs.introcs.StdRandom;

@@ -1,4 +1,4 @@
-package Chernova.week11.practice;
+package week11.practice;
 
 import edu.princeton.cs.algs4.*;
 

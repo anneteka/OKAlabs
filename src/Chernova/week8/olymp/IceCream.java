@@ -1,4 +1,4 @@
-package Chernova.week8.olymp;
+package week8.olymp;
 
 import java.util.Scanner;
 import java.util.StringTokenizer;

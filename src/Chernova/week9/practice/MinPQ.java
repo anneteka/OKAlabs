@@ -1,4 +1,4 @@
-package Chernova.week9.practice;
+package week9.practice;
 
 import java.util.Comparator;
 import java.util.Iterator;
